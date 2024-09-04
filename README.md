@@ -21,9 +21,11 @@ This tool converts `.cbz` (ZIP-based) and `.cbr` (RAR-based) comic book files in
 ## Setting up the Virtual Environment
 
 1. Clone this repository to your local machine:
-   ```bash
+   ```
+   bash
    git clone https://github.com/yourusername/comic-to-pdf-converter.git
-   cd comic-to-pdf-converter```
+   cd comic-to-pdf-converter
+   ```
 
 Create a Python virtual environment:
 ```python3 -m venv venv```
@@ -31,11 +33,13 @@ Create a Python virtual environment:
 Activate the virtual environment:
 On macOS/Linux:
 ```source venv/bin/activate```
+  
 On Windows:
 ```venv\Scripts\activate```
+
 Install the required Python packages:
 ```pip install -r requirements.txt```
-
+  
 
 ## Usage
 
@@ -44,23 +48,6 @@ Run the tool to convert all .cbz and .cbr files in a specified input directory t
 
 ```python3 convert_comics.py```
 
-Replace the input_directory and output_directory with your desired paths in the script before running.
-
-Example Directory Structure:
-
-Input directory (where your comics are stored):
-
-input/
-├── comic1.cbz
-├── comic2.cbr
-└── comic3.cbz
-
-Output directory (where PDFs will be saved):
-
-output/
-├── comic1.pdf
-├── comic2.pdf
-└── comic3.pdf
 
 ### Customization
 
