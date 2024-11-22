@@ -57,3 +57,7 @@ You can modify the input_directory and output_directory variables in the script 
 ### Licence 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
+## Support this project
+
+If you would like to support this project, please feel free to buy me a coffee https://t.co/GpUNwewruR
+
