@@ -48,6 +48,9 @@ Run the tool to convert all .cbz and .cbr files in a specified input directory t
 
 ```python3 convert_comics.py```
 
+If you get an error that says too many files are open, try temporarily changing 
+
+`ulimit -n 4096`
 
 ### Customization
 
