@@ -4,6 +4,7 @@ import subprocess
 from PIL import Image
 import fitz  # PyMuPDF
 import tempfile
+import re
 
 def extract_archive(file_path, extract_to):
     """
@@ -29,22 +30,23 @@ def extract_archive(file_path, extract_to):
     else:
         raise ValueError(f"Unsupported file type: {ext}. Only CBZ and CBR files are supported.")
 
+def natural_key(filename):
+    return [int(text) if text.isdigit() else text.lower()
+            for text in re.split(r'(\d+)', filename)]
+
 def get_images_from_folder(folder):
-    """
-    Recursively get images from the folder and subdirectories.
-    """
     images = []
     for root, _, files in os.walk(folder):
-        for file_name in sorted(files):
+        for file_name in sorted(files, key=natural_key):
             if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp')):
                 img_path = os.path.join(root, file_name)
-                print(f"Processing image: {img_path}")  # Debug line
-                img = Image.open(img_path)
-                if img.mode != 'RGB':
-                    img = img.convert('RGB')
-                images.append(img)
-    return images
-
+                print(f"Processing image: {img_path}")
+                with Image.open(img_path) as img:
+                    if img.mode != 'RGB':
+                        img = img.convert('RGB')
+                    images.append(img.copy())
+    return images    
+    
 def images_to_pdf(image_folder, output_pdf):
     """
     Converts a folder of images into a single PDF.
